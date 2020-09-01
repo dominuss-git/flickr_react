@@ -15,6 +15,8 @@ function Data() {
   let [visible_item, setVisible_item] = React.useState([]);
   let [photos_array, setPhotos_array] = React.useState([]);
   let [last_page, setLastPage] = React.useState(1);
+  let [current_item, setCurrentItem] = React.useState(0);
+  let [current_photo, setCurrentPhoto] = React.useState(0);
 
   const loadPhotosets = () => {
     return new Promise((resolve, reject) => {
@@ -73,7 +75,7 @@ function Data() {
               description: photoset_info.description._content,
               click: false,
               index: index+1,
-              modal: false
+              countOfPhoto: photoset[index].photoset.photo.length 
             });
           });
 
@@ -83,7 +85,7 @@ function Data() {
 
           setPhotos_array((photos_array = help_array));
           setVisible_item((visible_item = data));
-          // console.log(photos_array);
+          console.log(photos_array);
         });
       })
       .catch((error) => {
@@ -117,7 +119,7 @@ function Data() {
       j += 1, i += 1
     ) {
       data[j] = photos_array[i];
-      console.log(i);
+      // console.log(i);
     }
     setVisible_item((visible_item = data));
     // console.log(visible_item);
@@ -149,6 +151,27 @@ function Data() {
     ShowItems();
   }
 
+  const ShowSwiper = (current_index, photo_index) => {
+    setCurrentItem(current_index);
+    setCurrentPhoto(photo_index);
+    console.log(current_item + " " + current_photo);
+  }
+
+  const CloseSwiper = () => {
+    setCurrentItem(0);
+  }
+
+  const Swipe = (max_photo, photo_index, side) => {
+    if(current_photo + side >= max_photo) {
+      setCurrentPhoto(0);
+    } else 
+    if(current_photo + side < 0) {
+      setCurrentPhoto(max_photo-1);
+    } else {
+      setCurrentPhoto(photo_index + side);
+    }
+  }
+
   return (
     <div className="per-box">
       {photos_array.length < 20 ? "" : <SortField sort_by_input={sort_by_input} sort_by_name={sort_by_name}/>}
@@ -160,10 +183,10 @@ function Data() {
         </div>
       ) : (
         visible_item.map((data, index) => {
-          return <Item key={data.index} data={data} onToggle={onToggle} />;
+          return <Item ShowSwiper={ShowSwiper} index={data.index} key={data.index} data={data} onToggle={onToggle} />;
         })
       )}
-      <Modal/>
+      <Modal current_photo={current_photo} current_item={current_item} CloseSwiper={CloseSwiper} Swipe={Swipe} photos_array={photos_array}/>
       <Pages
         count={photos_array.length}
         last_page={last_page}

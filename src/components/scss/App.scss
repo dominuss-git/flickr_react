@@ -98,10 +98,10 @@ $photos-background: #f7f7f7;
   display: flex;
   flex-direction: row;
   &__page {
-    // display: flex;  
+    // display: flex;
     font-weight: bold;
     font-size: 30px;
-    margin:auto;
+    margin: auto;
     padding: 10px;
   }
   &__page_active {
@@ -130,7 +130,73 @@ $photos-background: #f7f7f7;
   cursor: pointer;
   background-color: $photos-background;
   color: #7c7c7c;
-} 
+}
+
+.modal {
+  display: none;
+  &__prev {
+    display: inline;
+    position: relative;
+    float: left;
+    margin: 30% auto 0 0;
+  }
+  &__prev:hover {
+    transform: scale(1.2);
+  }
+  &__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    margin: 10px;
+  }
+  &__image {
+    // position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+  }
+  &__next {
+    display: inline;
+    position: relative;
+    float: right;
+    margin: 30% -40px 0 auto;
+  }
+  &__next:hover {
+    transform: scale(1.2);
+  }
+  &__close {
+    display: block;
+    // position: relative;
+    float: right;
+  }
+  &__close:hover {
+    transform: scale(1.2);
+  }
+}
+
+.modal-active {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  padding-top: 5rem;
+  &__body {
+    padding: 2rem;
+    width: 400px;
+    border-radius: 5px;
+    background: $photos-background;
+    height: 500px;
+  }
+}
 
 .my-gallery-update {
   display: flex;
@@ -158,60 +224,31 @@ $photos-background: #f7f7f7;
   }
 }
 
-.modal {
-  display: none;
-  &__prev {
-    display: inline;
-    position: relative;
-    float: left;
-    margin: 30% auto 0 0;
-  }
-  &__prev:hover {
-    transform: scale(1.2);
-  }
-  &__next {
-    display: inline;
-    position: relative;
-    float: right;
-    margin: 30% -40px 0 auto;
-  } 
-  &__next:hover {
-    transform: scale(1.2);
-  }
-  &__close {
-    display: block;
-    // position: relative;
-    float: right;
-  }
-  &__close:hover {
-    transform: scale(1.2);
-  }
-}
-
-.modal-active {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  padding-top: 5rem;
-  &__body {
-    padding: 2rem;
-    width: 400px;
-    border-radius: 5px;
-    background: $photos-background;
-    height: 400px;
-  }
-}
-
 @media (max-width: 600px) {
   .per-box {
-    margin: 100px 20px 50px 20px;
+    margin: 0px 20px 50px 20px;
   }
   .pages-wrapper__page {
     padding: 0;
+  }
+  .modal {
+    &__img {
+      width: 240px;
+    }
+    &__image {
+
+    }
+    &__prev {
+      margin: 30% auto 0 -50px;
+    }
+    &__next {
+      margin: 30% -80px 0 auto;
+    }
+  }
+  .modal-active {
+    &__body {
+      width: 320px;
+      height: 400px;
+    }
   }
 }

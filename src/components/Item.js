@@ -4,7 +4,7 @@ import "./css/App.css";
 
 import Photo from "./Photo.js";
 
-function Item({i, data, onToggle, onClick }) {
+function Item({index, data, onToggle, ShowSwiper}) {
   return (
     <div className="content-wrapper" >
       <div onClick={() => onToggle(data.index)} className="content-wrapper__title">{data.title}</div>
@@ -17,8 +17,8 @@ function Item({i, data, onToggle, onClick }) {
       </div>
       <div className="content-wrapper__photoset">
         {data.click
-          ? data.photo.map((photo, index) => {
-              return <Photo onToggle={onClick} photo={photo} index={i} key={index + 1} />;
+          ? data.photo.map((photo, i) => {
+              return <Photo ShowSwiper={ShowSwiper} photo={photo} photo_number={i} index={index} key={i + 1} />;
             })
           : ""}
       </div>
