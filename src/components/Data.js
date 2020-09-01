@@ -155,6 +155,7 @@ function Data() {
     setCurrentItem(current_index);
     setCurrentPhoto(photo_index);
     console.log(current_item + " " + current_photo);
+    console.log(photos_array);
   }
 
   const CloseSwiper = () => {
@@ -183,7 +184,7 @@ function Data() {
         </div>
       ) : (
         visible_item.map((data, index) => {
-          return <Item ShowSwiper={ShowSwiper} index={data.index} key={data.index} data={data} onToggle={onToggle} />;
+          return <Item ShowSwiper={ShowSwiper} index={index+1} key={data.index} data={data} onToggle={onToggle} />;
         })
       )}
       <Modal current_photo={current_photo} current_item={current_item} CloseSwiper={CloseSwiper} Swipe={Swipe} photos_array={photos_array}/>
