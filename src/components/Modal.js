@@ -12,13 +12,13 @@ console.log(current_item);
         <div className="modal-active">
           <div className="modal-active__body">
             <div onClick={() => CloseSwiper()} className="modal__close">
-              <img src="./src/image/close.png" />
+              <img src="./image/close.png" />
             </div>
             <div onClick={() => Swipe(photos_array[current_item-1].photo.length, current_photo, -1)} className="modal__prev">
-              <img src="./src/image/prev.png" />
+              <img src="./image/prev.png" />
             </div>
             <div onClick={() => Swipe(photos_array[current_item-1].photo.length, current_photo, +1)} className="modal__next">
-              <img src="./src/image/next.png" />
+              <img src="./image/next.png" />
             </div>
             <div className="modal__img">
               <img src={`https://farm${photos_array[current_item-1].photo[current_photo].farm}.staticflickr.com/${photos_array[current_item-1].photo[current_photo].server}/${photos_array[current_item-1].photo[current_photo].id}_${photos_array[current_item-1].photo[current_photo].secret}.jpg`} className="modal__image" />
