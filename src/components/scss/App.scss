@@ -1,0 +1,217 @@
+$text-color: #000;
+$background: #ccc;
+$photos-background: #f7f7f7;
+
+.lds-facebook {
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  margin: auto auto;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: $text-color;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+.per-box {
+  display: flex;
+  margin: 0 100px 50px 100px;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: $background;
+  margin: 20px 0 0 0;
+  justify-content: center;
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  &__description {
+    padding: 20px;
+    font-size: 15px;
+  }
+  &__photoset {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.content-wrapper:hover {
+  background-color: $photos-background;
+  .photo-wrapper__photo {
+    background-color: $background;
+  }
+}
+
+.photo-wrapper {
+  background-color: $photos-background;
+  display: flex;
+  align-items: center;
+  width: 250px;
+  margin: 10px;
+  &__photo {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.pages-wrapper {
+  display: flex;
+  flex-direction: row;
+  &__page {
+    // display: flex;  
+    font-weight: bold;
+    font-size: 30px;
+    margin:auto;
+    padding: 10px;
+  }
+  &__page_active {
+    color: $background;
+  }
+  &__page:hover {
+    color: $background;
+  }
+}
+
+.sort-field {
+  text-align: center;
+  margin: auto;
+  background-color: $background;
+  width: 80%;
+  // border-radius: 5px;
+  &__val {
+    text-align: center;
+    margin: auto;
+    background-color: $background;
+    padding: 5px;
+  }
+}
+
+.sort-field__val:hover {
+  cursor: pointer;
+  background-color: $photos-background;
+  color: #7c7c7c;
+} 
+
+.my-gallery-update {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 5px;
+  background-color: $photos-background;
+  border-radius: 5px;
+  &__my-photo {
+    display: block;
+    width: 300px;
+    margin: 0 auto;
+    filter: grayscale(100%);
+  }
+  &__photo {
+    position: fixed;
+    right: 0;
+    left: 0;
+    width: 300px;
+    margin: 0 auto;
+  }
+  &__my-photo:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+  }
+}
+
+.modal {
+  display: none;
+  &__prev {
+    display: inline;
+    position: relative;
+    float: left;
+    margin: 30% auto 0 0;
+  }
+  &__prev:hover {
+    transform: scale(1.2);
+  }
+  &__next {
+    display: inline;
+    position: relative;
+    float: right;
+    margin: 30% -40px 0 auto;
+  } 
+  &__next:hover {
+    transform: scale(1.2);
+  }
+  &__close {
+    display: block;
+    // position: relative;
+    float: right;
+  }
+  &__close:hover {
+    transform: scale(1.2);
+  }
+}
+
+.modal-active {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+  &__body {
+    padding: 2rem;
+    width: 400px;
+    border-radius: 5px;
+    background: $photos-background;
+    height: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .per-box {
+    margin: 100px 20px 50px 20px;
+  }
+  .pages-wrapper__page {
+    padding: 0;
+  }
+}
